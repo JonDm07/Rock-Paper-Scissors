@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors!</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice() {
+            let getNumber = Math.floor(Math.random() * 3)
+
+            switch (getNumber) { 
+                case 0:
+                 return  "Rock"
+                 break;
+                case 1:
+                 return  "Paper"
+                 break;
+                case 2:
+                 return "Scissors"
+                 break;
+            }
+        }
+        let playerChoice
+        function askPlayer () {
+            let choice = prompt("Rock? Paper? Scissors? You choose!")
+            choice = choice.toUpperCase();
+            return playerChoice = choice;
+        }
+
+        let result;
+        let draw = 0
+        let loss = 0
+        let win = 0
+
+        function round(getComputerChoice, playerChoice) {
+            if (getComputerChoice === "Rock" && playerChoice === "ROCK") {
+                return result ="Draw!"
+            } else if (getComputerChoice === "Rock" && playerChoice === "PAPER") {
+                return result ="You Win! Paper beats Rock"
+
+            } else if (getComputerChoice === "Rock" && playerChoice === "SCISSORS") {
+                return result ="You Lose! Rock beats Scissors"
+
+            } else if (getComputerChoice === "Paper" && playerChoice === "ROCK") {
+                return result ="You Lose! Paper beats Rock"
+
+            } else if (getComputerChoice === "Paper" && playerChoice === "PAPER") {
+                return result ="Draw!"
+            
+            } else if (getComputerChoice === "Paper" && playerChoice === "SCISSORS") {
+                return result ="You Win! Scissors beat Paper"
+            
+            } else if (getComputerChoice === "Scissors" && playerChoice === "ROCK") {
+                return result ="You Win! Rock beats Scissors"
+            
+            } else if (getComputerChoice === "Scissors" && playerChoice === "PAPER") {
+                return result ="You Lose! Scissors beat Paper"
+            
+            } else if (getComputerChoice === "Scissors" && playerChoice === "SCISSORS") {
+                return result ="Draw!"
+            }
+        }
+
+        function game() {
+            for (i = 0; i < 5; i++) {
+                round(getComputerChoice(), askPlayer())
+                console.log(result)
+                if (result === "Draw!" ) {
+                    draw++ 
+                } else if (result === "You Lose! Scissors beat Paper" || result === "You Lose! Paper beats Rock" || result === "You Lose! Rock beats Scissors") {
+                    loss++
+                } else {
+                     win++
+                }
+                console.log(`DRAW: ${draw}`)
+                console.log(`LOSS: ${loss}`)
+                console.log(`WIN: ${win}`)
+            }
+        }
+
+        game()
+
+        let gameResult;
+
+        if (win > loss) {
+            gameResult = "You Won! Congratulations!"
+
+        } else if (win < loss) {
+            gameResult = "You Lost! Better luck next time!"
+        } else {
+            gameResult = "Draw!"
+        }
+
+        console.log(gameResult)
+ 
+        
+ 
+
+        
+        
+        
+        
+
+    </script>
+    
+</body>
+</html>
