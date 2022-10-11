@@ -7,7 +7,21 @@
     <title>Rock Paper Scissors!</title>
 </head>
 <body>
+    <div>
+        <button class="rock">Rock!</button>
+        <button class="paper">Paper!</button>
+        <button class="scissors">Scissors!</button>
+    </div>
+
     <script>
+        const playerSelection = document.querySelectorAll('button')
+        let playerChoice; 
+        let result;
+        
+        const rock = document.querySelector('.rock')
+        const paper = document.querySelector('.paper')
+        const scissors = document.querySelector('.scissors')
+
         function getComputerChoice() {
             let getNumber = Math.floor(Math.random() * 3)
 
@@ -23,14 +37,9 @@
                  break;
             }
         }
-        let playerChoice
-        function askPlayer () {
-            let choice = prompt("Rock? Paper? Scissors? You choose!")
-            choice = choice.toUpperCase();
-            return playerChoice = choice;
-        }
+        
 
-        let result;
+        
         let draw = 0
         let loss = 0
         let win = 0
@@ -38,51 +47,59 @@
         function round(getComputerChoice, playerChoice) {
             if (getComputerChoice === "Rock" && playerChoice === "ROCK") {
                 return result ="Draw!"
+                console.log(result)
             } else if (getComputerChoice === "Rock" && playerChoice === "PAPER") {
                 return result ="You Win! Paper beats Rock"
+                console.log(result)
 
             } else if (getComputerChoice === "Rock" && playerChoice === "SCISSORS") {
                 return result ="You Lose! Rock beats Scissors"
+                console.log(result)
 
             } else if (getComputerChoice === "Paper" && playerChoice === "ROCK") {
                 return result ="You Lose! Paper beats Rock"
+                console.log(result)
 
             } else if (getComputerChoice === "Paper" && playerChoice === "PAPER") {
                 return result ="Draw!"
+                console.log(result)
             
             } else if (getComputerChoice === "Paper" && playerChoice === "SCISSORS") {
                 return result ="You Win! Scissors beat Paper"
             
             } else if (getComputerChoice === "Scissors" && playerChoice === "ROCK") {
                 return result ="You Win! Rock beats Scissors"
+                console.log(result)
             
             } else if (getComputerChoice === "Scissors" && playerChoice === "PAPER") {
                 return result ="You Lose! Scissors beat Paper"
+                console.log(result)
             
             } else if (getComputerChoice === "Scissors" && playerChoice === "SCISSORS") {
                 return result ="Draw!"
-            }
-        }
-
-        function game() {
-            for (i = 0; i < 5; i++) {
-                round(getComputerChoice(), askPlayer())
                 console.log(result)
-                if (result === "Draw!" ) {
-                    draw++ 
-                } else if (result === "You Lose! Scissors beat Paper" || result === "You Lose! Paper beats Rock" || result === "You Lose! Rock beats Scissors") {
-                    loss++
-                } else {
-                     win++
-                }
-                console.log(`DRAW: ${draw}`)
-                console.log(`LOSS: ${loss}`)
-                console.log(`WIN: ${win}`)
             }
         }
 
-        game()
+        rock.addEventListener('click', () => {
+            playerChoice = "ROCK"
+            console.log(playerChoice)
+            console.log(round(getComputerChoice(), playerChoice))
+        });
 
+        paper.addEventListener('click', () => {
+            playerChoice = "PAPER"
+            console.log(playerChoice)
+            console.log(round(getComputerChoice(), playerChoice))                        
+        });
+
+        scissors.addEventListener('click', () => {
+            playerChoice = "SCISSORS"
+            console.log(playerChoice)
+            console.log(round(getComputerChoice(), playerChoice))                        
+        });
+
+        
         let gameResult;
 
         if (win > loss) {
@@ -94,7 +111,10 @@
             gameResult = "Draw!"
         }
 
-        console.log(gameResult)
+        
+
+
+        
  
         
  
