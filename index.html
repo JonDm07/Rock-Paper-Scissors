@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"</link>
     <title>Rock Paper Scissors!</title>
 </head>
 <body>
-    <div>
-        <button class="rock">Rock!</button>
-        <button class="paper">Paper!</button>
-        <button class="scissors">Scissors!</button>
+    <div class="container">
+        <div class="div">
+            <button class="rock">Rock!</button>
+            <button class="paper">Paper!</button>
+            <button class="scissors">Scissors!</button>
+        </div>
+        <p class="you">You:</p>
+        <p class="ai">AI:</p>
     </div>
-    <p class="you">You:</p>
-    <p class="ai">AI:</p>
 
     <script>
         let playerChoice; 
@@ -82,7 +85,7 @@
 
         const gameResultp = document.createElement('p')    
         const p = document.createElement('p')
-        const div = document.querySelector('div')
+        const div = document.querySelector('.container')
         const you = document.querySelector('.you')
         const ai = document.querySelector('.ai')
 
@@ -102,15 +105,27 @@
                 ai.textContent = `AI: ${loss}`
                 
             }
-            if (win > loss && win === 5) {
-            gameResultp.textContent = "You Won! Congratulations!"
-            div.appendChild(gameResultp)
+            if (win > loss && win === 5) { 
+                gameResultp.textContent = "You Won! Congratulations!"
+                div.appendChild(gameResultp)
+                div.removeChild(p)
+                div.removeChild(you)
+                div.removeChild(ai)
+                win = 0
+                loss = 0 
+
 
 
              } else if (win < loss && loss === 5) {
-            gameResultp.textContent = "You Lost! Better luck next time!"
-            div.appendChild(gameResultp)
-            }
+                gameResultp.textContent = "You Lost! Better luck next time!"
+                div.appendChild(gameResultp)
+                div.removeChild(p)
+                div.removeChild(you)
+                div.removeChild(ai)
+                win = 0
+                loss = 0
+            } 
+            
         });
 
         paper.addEventListener('click', () => {
@@ -131,11 +146,22 @@
             if (win > loss && win === 5) {
             gameResultp.textContent = "You Won! Congratulations!"
             div.appendChild(gameResultp)
+            div.removeChild(p)
+            div.removeChild(you)
+            div.removeChild(ai)
+            win = 0
+            loss = 0 
+
 
 
              } else if (win < loss && loss === 5) {
             gameResultp.textContent = "You Lost! Better luck next time!"
             div.appendChild(gameResultp)
+            div.removeChild(p)
+            div.removeChild(you)
+            div.removeChild(ai)
+            win = 0
+            loss = 0
             }                       
         });
 
@@ -157,12 +183,23 @@
             if (win > loss && win === 5) {
             gameResultp.textContent = "You Won! Congratulations!"
             div.appendChild(gameResultp)
+            div.removeChild(p)
+            div.removeChild(you)
+            div.removeChild(ai)
+            win = 0
+            loss = 0 
+
 
 
              } else if (win < loss && loss === 5) {
             gameResultp.textContent = "You Lost! Better luck next time!"
             div.appendChild(gameResultp)
-            }                     
+            div.removeChild(p)
+            div.removeChild(you)
+            div.removeChild(ai)
+            win = 0
+            loss = 0
+            }                    
         });       
         
         
