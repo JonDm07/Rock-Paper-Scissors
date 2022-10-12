@@ -12,11 +12,16 @@
         <button class="paper">Paper!</button>
         <button class="scissors">Scissors!</button>
     </div>
+    <p class="you">You:</p>
+    <p class="ai">AI:</p>
 
     <script>
-        const playerSelection = document.querySelectorAll('button')
         let playerChoice; 
         let result;
+
+        let loss = 0
+        let win = 0
+        let gameResult;
         
         const rock = document.querySelector('.rock')
         const paper = document.querySelector('.paper')
@@ -36,13 +41,7 @@
                  return "Scissors"
                  break;
             }
-        }
-        
-
-        
-        let draw = 0
-        let loss = 0
-        let win = 0
+        };
 
         function round(getComputerChoice, playerChoice) {
             if (getComputerChoice === "Rock" && playerChoice === "ROCK") {
@@ -81,45 +80,90 @@
             }
         }
 
+        const gameResultp = document.createElement('p')    
+        const p = document.createElement('p')
+        const div = document.querySelector('div')
+        const you = document.querySelector('.you')
+        const ai = document.querySelector('.ai')
+
+
         rock.addEventListener('click', () => {
             playerChoice = "ROCK"
             console.log(playerChoice)
             console.log(round(getComputerChoice(), playerChoice))
+            p.textContent = result
+            div.appendChild(p)
+            if (result === "You Win! Rock beats Scissors" ) {
+                win++
+                you.textContent = `You: ${win}`
+
+            } else if (result === "You Lose! Paper beats Rock") {
+                loss++
+                ai.textContent = `AI: ${loss}`
+                
+            }
+            if (win > loss && win === 5) {
+            gameResultp.textContent = "You Won! Congratulations!"
+            div.appendChild(gameResultp)
+
+
+             } else if (win < loss && loss === 5) {
+            gameResultp.textContent = "You Lost! Better luck next time!"
+            div.appendChild(gameResultp)
+            }
         });
 
         paper.addEventListener('click', () => {
             playerChoice = "PAPER"
             console.log(playerChoice)
-            console.log(round(getComputerChoice(), playerChoice))                        
+            console.log(round(getComputerChoice(), playerChoice)) 
+            p.textContent = result
+            div.appendChild(p)
+            if (result === "You Win! Paper beats Rock" ) {
+                win++
+                you.textContent = `You: ${win}`
+
+            } else if (result === "You Lose! Scissors beat Paper") {
+                loss++
+                ai.textContent = `AI: ${loss}`
+                
+            }
+            if (win > loss && win === 5) {
+            gameResultp.textContent = "You Won! Congratulations!"
+            div.appendChild(gameResultp)
+
+
+             } else if (win < loss && loss === 5) {
+            gameResultp.textContent = "You Lost! Better luck next time!"
+            div.appendChild(gameResultp)
+            }                       
         });
 
         scissors.addEventListener('click', () => {
             playerChoice = "SCISSORS"
             console.log(playerChoice)
-            console.log(round(getComputerChoice(), playerChoice))                        
-        });
+            console.log(round(getComputerChoice(), playerChoice))
+            p.textContent = result
+            div.appendChild(p)
+            if (result === "You Win! Scissors beat Paper" ) {
+                win++
+                you.textContent = `You: ${win}`
 
-        
-        let gameResult;
-
-        if (win > loss) {
-            gameResult = "You Won! Congratulations!"
-
-        } else if (win < loss) {
-            gameResult = "You Lost! Better luck next time!"
-        } else {
-            gameResult = "Draw!"
-        }
-
-        
+            } else if (result === "You Lose! Rock beats Scissors") {
+                loss++
+                ai.textContent = `AI: ${loss}`
+                
+            }  
+            if (win > loss && win === 5) {
+            gameResultp.textContent = "You Won! Congratulations!"
+            div.appendChild(gameResultp)
 
 
-        
- 
-        
- 
-
-        
+             } else if (win < loss && loss === 5) {
+            gameResultp.textContent = "You Lost! Better luck next time!"
+            div.appendChild(gameResultp)
+            }                     
+        });       
         
         
         
